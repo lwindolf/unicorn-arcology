@@ -1,0 +1,35 @@
+---
+name: Big Data Platform
+reference:
+   text: https://eng.uber.com/uber-big-data-platform/
+   img: https://1fykyq3mdn5r21tpna3wkdyi-wpengine.netdna-ssl.com/wp-content/uploads/2018/10/image1-1-696x383.png
+description: |
+   Incremental data ingestion using Marmaray, more efficient
+   storage using Hudi library. Unified Avro encoding with
+   standard global metadata headets in a generic ingest pipeline.
+   
+
+date: 2016-00-00
+
+solutions:
+   - Hadoop
+   - Parquet
+   - ETL
+   - Kafka
+   - Sharded KV
+   - Hive
+   - Spark
+   - Presto
+   - Hudi
+   - Marmaray
+
+metrics:
+   max-storage: 100PB
+   max-latency: 1h
+
+
+limitations:
+   - latency should be lower
+   - dedicated hardware
+   - scheduling Hadoop and non-Hadoop services
+   - fragile ingest pipeline
