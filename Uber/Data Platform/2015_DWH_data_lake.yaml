@@ -1,0 +1,34 @@
+---
+name: DWH Data Lake
+reference:
+   text: https://eng.uber.com/uber-big-data-platform/
+   img: https://1fykyq3mdn5r21tpna3wkdyi-wpengine.netdna-ssl.com/wp-content/uploads/2018/10/image2-1.png
+description: |
+   DWH to aggregate all Ubers data in one place providing
+   an SQL interface.
+   
+
+date: 2015-00-00
+
+solutions:
+   - Vertica
+   - ETL
+   - Kafka
+   - Sharded KV
+
+metrics:
+   # source says ~10s TB, so let's quantify as 50TB
+   max-storage: 50TB
+
+   # source says 24-48h
+   max-latency: 48h
+
+   # source says "several hundred"
+   max-users: 500
+
+limitations:
+   - problems JSON format
+   - non-change-resilient ingestion
+   - lack of formal schema communication
+   - expensive to scale
+   - hard to scale horizontally

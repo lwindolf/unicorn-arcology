@@ -1,0 +1,34 @@
+---
+name: Hadoop Data Lake
+reference:
+   text: https://eng.uber.com/uber-big-data-platform/
+   img: https://1fykyq3mdn5r21tpna3wkdyi-wpengine.netdna-ssl.com/wp-content/uploads/2018/10/image8.png
+description: |
+   Leverages Hadoop to enable horizontal scaling.
+   
+
+date: 2016-00-00
+
+solutions:
+   - Hadoop
+   - Parquet
+   - ETL
+   - Kafka
+   - Sharded KV
+   - Hive
+   - Spark
+   - Presto
+   - Vertica
+
+metrics:
+   max-storage: 10PB
+   max-latency: 24h
+   max-cores: 10000 vcores
+   max-jobs: 100000/day
+
+
+limitations:
+   - HDFS NameNode load
+   - still high latency
+   - handling historical data
+   - HDFS/Parquet don't support updating data
