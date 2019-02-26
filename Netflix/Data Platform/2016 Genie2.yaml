@@ -1,0 +1,43 @@
+---
+name: Data Platform with Genie2
+reference:
+   text: https://medium.com/netflix-techblog/genie-2-0-second-wish-granted-d888d79455c6
+   img: https://cdn-images-1.medium.com/max/800/0*dk7QHTTHxa8EhMXe.
+description: |
+   FIXME
+   
+
+date: 2014-11-00
+
+solutions:
+   - ETL
+   - Hadoop2
+   - Parquet
+   - Hive
+   - Pig
+   - Genie
+   - Presto
+   - Spark
+   - Inviso
+   - S3
+   - Sqoop
+
+hosting:
+   - AWS
+
+metrics:
+   # source says "several hundred jobs"
+   max-concurrent-jobs: 1000 
+
+
+design-goals:
+   - Generic data model to run jobs on multi-tenant distributed clusters
+   - Flexible cluster and command selection algorithm for running a job
+   - Improved APIs
+
+limitations:
+   # source is another blog https://medium.com/netflix-techblog/evolving-the-netflix-data-platform-with-genie-3-598021604dda
+   - infrastructure jobs run on worker nodes -> redundant DB cleanups
+   - no security support
+   - no leadership election
+   - rigid job types, no pluggable other task types
