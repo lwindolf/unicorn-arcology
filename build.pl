@@ -29,12 +29,12 @@ foreach my $filename (split(/\n/, `find . -name "*.yaml"`)) {
 	$data->{$+{org}."_".$+{arch}} = [] unless($data->{$+{org}."_".$+{arch}});
 	push(@{$data->{$+{org}."_".$+{arch}}}, $yaml);
 }
-use Data::Dumper;
 # Dump org-arch tuple contents
 foreach my $oa (keys %$data) {
 	open(my $OUTPUT, ">$BASE/$oa.json") or die "Cannot write '$oa.json' ($!)";
 	print $OUTPUT to_json($data->{$oa});
 }
 
+my @index = map { { $_ => $index->{$_} } } keys %$index;
 open(my $OUTPUT, ">$BASE/index.json") or die "Cannot write 'index.json' ($!)";
-print $OUTPUT to_json($index);
+print $OUTPUT to_json(\@index);
