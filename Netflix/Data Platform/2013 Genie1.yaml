@@ -46,3 +46,24 @@ limitations:
    - only Hadoop 1.x
    - fixed data model
    - no good criteria to select execution cluster
+
+flowchart: |
+   [ETL: Enterprise Scheduler,
+   Ursula, Aegisthus] -> [Hadoop Paas (Genie)]
+   [Viz tools] -> [Hadoop Paas (Genie)]
+   [Web UIs] -> [Hadoop Paas (Genie)]
+   
+   [Hadoop Paas (Genie)|
+   [Job Execution]
+   [Resource Config & Mgmt]
+   ] -> [Tools]
+
+   [Tools|
+      [pigs]
+      [hive]
+      [Java]
+      [Python]
+   ] -> [Hadoop (EMR) Clusters] 
+   
+   [Hadoop (EMR) Clusters] -> [AWS S3
+   Cloud Data Warehouse]
