@@ -41,3 +41,23 @@ limitations:
    - no security support
    - no leadership election
    - rigid job types, no pluggable other task types
+   
+flowchart: |
+  [ETL] -> [Hadoop Paas (Genie2)]
+  [lipstick] -> [Hadoop Paas (Genie2)]
+  [invis] -> [Hadoop Paas (Genie2)]
+  [Web UIs] -> [Hadoop Paas (Genie2)]
+  
+  [Hadoop Paas (Genie2)|
+  [Franklin;Metadata Service]
+  ] -> [Tools]
+  
+  [Tools|
+    [Pigs]
+    [Hive]
+    [Presto]
+  ] -> [Hadoop2 (EMR) Clusters] 
+  
+  [Hadoop2 (EMR) Clusters] -> [AWS S3
+  Parquet FF]
+
