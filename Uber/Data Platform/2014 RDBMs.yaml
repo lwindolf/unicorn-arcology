@@ -17,7 +17,7 @@ metrics:
    max-storage: 10TB
    max-latency: 60s
 
-flowchart:
-  [Service1] -> [RDBMS 1]
-  [Service2] -> [RDBMS 1]
-  [Service3] -> [RDBMS 2]
+flowchart: |
+  [Service1] -> [<database>RDBMS 1]
+  [Service2] -> [<database>RDBMS 1]
+  [Service3] -> [<database>RDBMS 2]
