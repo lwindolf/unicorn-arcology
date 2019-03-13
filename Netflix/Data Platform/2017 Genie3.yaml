@@ -40,3 +40,23 @@ limitations:
    - jobs run on the same node
    - missing open source API
    - full text search jobs missing
+
+flowchart: |
+  #direction: right
+  
+  [ELB] -> [ASG|
+  [Apache|
+  [mod_jk]] -> [Genie Web]
+  ]
+  
+  [ASG] -> [Compute|
+  [Hadoop YARN]
+  [Presto]
+  ]
+  [ASG] -> [Zookeeper]
+  [ASG] -> [Redis]
+  [ASG] -> [MySQL]
+  
+  [Zookeeper]--[<note>Leader Election]
+  [Redis]--[<note>Session Cache]
+
