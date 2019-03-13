@@ -32,3 +32,26 @@ limitations:
    - lack of formal schema communication
    - expensive to scale
    - hard to scale horizontally
+
+flowchart: |
+  #direction: right
+  
+  [Kafka] -> [Cloud Storage]
+  [<database>RDBMS] -> [ETL]
+  [<database>KVs] -> [ETL]
+  [Cloud Storage] -> [EMR]
+  [Cloud Storage] -> [ETL]
+  
+  [ETL] -> [Vertica;Data Warehouse]
+  
+  [Vertica] -> [Applications|
+  [ETL Modelling]
+  [City Ops]
+  [ML]
+  [Experiments]
+  ]
+  
+  [Vertica] -> [Ad hoc Analytics|
+  [City Ops]
+  [Data Scientists]
+  ]
