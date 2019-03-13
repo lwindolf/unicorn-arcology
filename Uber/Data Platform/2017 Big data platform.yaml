@@ -33,3 +33,24 @@ limitations:
    - dedicated hardware
    - scheduling Hadoop and non-Hadoop services
    - fragile ingest pipeline
+
+flowchart: |
+  #direction: down
+  
+  [<database>RDBMS] -> [<state>Kafka]
+  [<database>KVs] -> [Kafka]
+  
+  [Kafka] -> [Ingestion;(Batch)]
+  
+  [Ingestion]->[Hudi|
+    [Parquet]
+  ]
+  [Hudi] -> [ETL;(Flattened/Modeled Tables)]
+  [Hudi] -> [Tools|
+    [Hive]
+    [Spark]
+    [Presto]
+    [Notebooks]
+  ]
+  
+  [ETL] -> [Tools]
