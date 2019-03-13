@@ -34,8 +34,6 @@ limitations:
    - HDFS/Parquet don't support updating data
 
 flowchart: |
-  #direction: right
-  
   [Kafka] -> [Ingestion;(EL)]
   [<database>RDBMS] -> [Ingestion]
   [<database>KVs] -> [Ingestion]
