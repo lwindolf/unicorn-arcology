@@ -34,8 +34,6 @@ limitations:
    - hard to scale horizontally
 
 flowchart: |
-  #direction: right
-  
   [Kafka] -> [Cloud Storage]
   [<database>RDBMS] -> [ETL]
   [<database>KVs] -> [ETL]
