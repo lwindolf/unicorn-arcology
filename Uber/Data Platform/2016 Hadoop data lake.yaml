@@ -32,3 +32,35 @@ limitations:
    - still high latency
    - handling historical data
    - HDFS/Parquet don't support updating data
+
+flowchart: |
+  #direction: right
+  
+  [Kafka] -> [Ingestion;(EL)]
+  [<database>RDBMS] -> [Ingestion]
+  [<database>KVs] -> [Ingestion]
+  
+  [Ingestion]->[Hadoop|
+    [Parquet]
+  ]
+  [Hadoop] <-> [ETL]
+  [Hadoop] -> [<database>Vertica;Data Warehouse;(recent data)]
+  [Hadoop] -> [Tools|
+    [Hive]
+    [Spark]
+    [Presto]
+    [Notebooks]
+  ]
+  
+  [Vertica] -> [Ad hoc Analytics]
+    [Tools] -> [Ad hoc Analytics|
+    [City Ops]
+    [Data Scientists]
+  ]
+  
+  [Tools] -> [Applications|
+    [ETL Modelling]
+    [City Ops]
+    [ML]
+    [Experiments]
+  ]
