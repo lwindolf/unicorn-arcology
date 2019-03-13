@@ -58,6 +58,5 @@ flowchart: |
     [Presto]
   ] -> [Hadoop2 (EMR) Clusters] 
   
-  [Hadoop2 (EMR) Clusters] -> [AWS S3
-  Parquet FF]
+  [Hadoop2 (EMR) Clusters] -> [AWS S3;Parquet FF]
 
