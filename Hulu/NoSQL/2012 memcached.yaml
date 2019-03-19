@@ -1,0 +1,27 @@
+---
+name: Hulu MySQL memcached platform
+reference:
+   text: https://content.pivotal.io/blog/case-study-how-hulu-scaled-serving-4-billion-videos-using-redis
+description: |
+   Sharded RDBMS cached by memcached with consistent hashing.
+   
+date: 2012-00-00
+
+solutions:
+   - MySQL
+   - Python
+   - memcached
+
+metrics:
+
+
+design-goals:
+   - early scale out in a single location
+
+limitations:
+   - single datacenter only, as it was impossible to replicate the memcached instance
+   - lacking performance
+
+flowchart: |
+   [Python Application] -> [memcached] 
+   [memcached] -> [<database>Sharded MySQL;Cluster]
