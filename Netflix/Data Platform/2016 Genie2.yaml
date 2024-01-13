@@ -1,15 +1,46 @@
----
-name: Data Platform with Genie2
-reference:
-   text: https://medium.com/netflix-techblog/genie-2-0-second-wish-granted-d888d79455c6
-   img: https://cdn-images-1.medium.com/max/800/0*dk7QHTTHxa8EhMXe.
-description: |
-   FIXME
+# Data Platform with Genie2 (2014)
+
+```mermaid
+flowchart TB
+  subgraph Tools
+     direction LR
+     lipstick
+     invis
+     other
+  end
+  subgraph Service
+     direction LR
+     Genie2
+     Franklin
+  end
+  subgraph Hadoop[EMR Hadoop2 clusters]
+     pig
+     hive     
+  end
+  subgraph Compute
+     Hadoop
+     Presto
+  end
+  subgraph Storage
+     Parquet[Parquet FF S3]
+  end
+
+  Storage<-->Compute
+  Compute<-->Service
+  Service<-->Tools
+```
+
+## Design goals
+   - Generic data model to run jobs on multi-tenant distributed clusters
+   - Flexible cluster and command selection algorithm for running a job
+   - Improved APIs
+
+## Sizing
+
+Company blog \[1] says "several hundred jobs"
    
+## Stack
 
-date: 2014-11-00
-
-solutions:
    - ETL
    - Hadoop2
    - Parquet
@@ -22,41 +53,21 @@ solutions:
    - S3
    - Sqoop
 
-hosting:
+Hosting:
+
    - AWS
 
-metrics:
-   # source says "several hundred jobs"
-   max-concurrent-jobs: 1000 
+# Limitations
 
+According to company blog \[3]:
 
-design-goals:
-   - Generic data model to run jobs on multi-tenant distributed clusters
-   - Flexible cluster and command selection algorithm for running a job
-   - Improved APIs
+- infrastructure jobs run on worker nodes -> redundant DB cleanups
+- no security support
+- no leadership election
+- rigid job types, no pluggable other task types
 
-limitations:
-   # source is another blog https://medium.com/netflix-techblog/evolving-the-netflix-data-platform-with-genie-3-598021604dda
-   - infrastructure jobs run on worker nodes -> redundant DB cleanups
-   - no security support
-   - no leadership election
-   - rigid job types, no pluggable other task types
-   
-flowchart: |
-  [ETL] -> [Hadoop Paas (Genie2)]
-  [lipstick] -> [Hadoop Paas (Genie2)]
-  [invis] -> [Hadoop Paas (Genie2)]
-  [Web UIs] -> [Hadoop Paas (Genie2)]
-  
-  [Hadoop Paas (Genie2)|
-  [Franklin;Metadata Service]
-  ] -> [Tools]
-  
-  [Tools|
-    [Pigs]
-    [Hive]
-    [Presto]
-  ] -> [Hadoop2 (EMR) Clusters] 
-  
-  [Hadoop2 (EMR) Clusters] -> [AWS S3;Parquet FF]
+## References
 
+- \[1] https://medium.com/netflix-techblog/genie-2-0-second-wish-granted-d888d79455c6
+- \[2] https://cdn-images-1.medium.com/max/800/0*dk7QHTTHxa8EhMXe.
+- \[3] https://medium.com/netflix-techblog/evolving-the-netflix-data-platform-with-genie-3-598021604dda
